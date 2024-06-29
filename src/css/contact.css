@@ -1,0 +1,60 @@
+.contact_sendemail_btn{
+    background-color: rgba(0, 174, 255, 0.76);
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 1rem auto;
+    margin-bottom: 0;
+    padding: .5rem 1.3rem;
+    border-radius: .7rem;
+    box-shadow: 1px 1px 3px 1px rgba(49, 50, 53, 0.384);
+}
+.contact_sendemail_btn:hover{
+    cursor: pointer;
+    background-color: rgba(0, 174, 255, 0.356);
+}
+.input_text_contact{
+    color: rgba(0, 94, 172, 0.664);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+}
+.cotact_page_heading{
+    animation: heading_ani;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    transform-origin: left;
+    animation-iteration-count: initial;
+}
+
+@keyframes heading_ani {
+    0%{
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+.contact_form{
+    background-color: rgba(231, 231, 231, 0.411);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 40%;
+    border: 2px solid rgba(189, 189, 189, 0.295);
+    box-shadow: 5px 5px 4px 2px rgba(189, 189, 189, 0.295);
+}
+@media (max-width: 980px) {
+    .contact_form {
+        width: 70%;
+    }
+  }

@@ -1,0 +1,47 @@
+.nav_list_open {
+    z-index: 2;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: .3rem;
+    font-family: 'poppins';
+    font-size: 1.4rem;
+    position: absolute;
+    top: 10vh;
+    right: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 1px rgba(128, 128, 128, 0.425);
+    gap: .5rem;
+}
+.nav_list_closed{
+    display: none;
+}
+.navbar_item_list{
+    display: none;
+}
+.real_nav{
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+@media (max-width: 630px) {
+    .navbar_item_list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .real_nav{
+        display: none;
+    }
+  }
+.nav_item_list_icon:hover{
+    background-color: rgba(190, 190, 190, 0.466);
+}
