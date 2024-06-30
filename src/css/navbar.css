@@ -1,5 +1,4 @@
 .nav_list_open {
-    z-index: 2;
     font-weight: 300;
     display: flex;
     flex-direction: column;
@@ -11,7 +10,7 @@
     font-size: 1.4rem;
     position: absolute;
     top: 10vh;
-    right: 10px;
+    right: 13px;
     background-color: white;
     box-shadow: 2px 2px 5px 1px rgba(128, 128, 128, 0.425);
     gap: .5rem;
@@ -31,7 +30,7 @@
     justify-content: center;
     gap: 1.5rem;
 }
-@media (max-width: 630px) {
+@media (max-width: 810px) {
     .navbar_item_list{
         display: flex;
         flex-direction: column;

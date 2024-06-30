@@ -1,7 +1,18 @@
 import {
-    contact,
     github,
-    linkedin
+    linkedin,
+    contact,
+    skillsync,
+    css,
+    express,
+    git,
+    html,
+    javascript,
+    mongodb,
+    nodejs,
+    react,
+    tailwindcss,
+    gemini
 } from "../assets/icons";
 
 export const socialLinks = [
@@ -24,3 +35,50 @@ export const socialLinks = [
         theme: 'btn-back-blue',
     }
 ];
+
+export const tech = [
+    {
+        name: 'html',
+        iconUrl: html
+    },
+    {
+        name: 'css',
+        iconUrl: css
+    },
+    {
+        name: 'javascript',
+        iconUrl: javascript
+    },
+    {
+        name: 'express',
+        iconUrl: express
+    },
+    {
+        name: 'git',
+        iconUrl: git
+    },
+    {
+        name: 'github',
+        iconUrl: github
+    },
+    {
+        name: 'nodejs',
+        iconUrl: nodejs
+    },
+    {
+        name: 'react',
+        iconUrl: react
+    },
+    {
+        name: 'mongoDB',
+        iconUrl: mongodb
+    },
+    {
+        name: 'tailwindCSS',
+        iconUrl: tailwindcss
+    },
+    {
+        name: 'Gemini',
+        iconUrl: gemini
+    },
+]

@@ -1,0 +1,11 @@
+@media (max-width: 665px){
+    .header_div{
+        width: 95%;
+    }
+    .tech_div{
+        width: 95%;
+    }
+    .remove_margin{
+        margin: 0;
+    }
+} 

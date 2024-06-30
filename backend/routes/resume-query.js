@@ -170,7 +170,7 @@ router.post('/hr-resume-check', upload.single("file"), async (req, res) => {
 });
 
 
-router.post('/resume-getowner', upload.single("file"), async (req, res) => {
+router.post('/resume-get-details', upload.single("file"), async (req, res) => {
   try{
     const filePath = req.file.path;
     const dataBuffer = fs.readFileSync(filePath);
@@ -178,16 +178,21 @@ router.post('/resume-getowner', upload.single("file"), async (req, res) => {
     const text = pdfData.text;
     const fileName = req.file.filename;
 
-    const prompt = `Analyze the following resume and just give me the resume owner's name and say nothing else.\n\n${text}`;
+    const prompt1 = `Analyze the following resume and just give me the resume owner's name and say nothing else.\n\n${text}`;
+    const prompt2 = `Analyze the following resume and in just one word or phrase give me the domain the resume owner is best at and say nothing else.\n\n${text}`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const owner_name = response.text();
+    const result1 = await model.generateContent(prompt1);
+    const result2 = await model.generateContent(prompt2);
+    const response1 = await result1.response;
+    const response2 = await result2.response;
+    const owner_name = response1.text();
+    const resume_skills = response2.text();
 
     res.json({
       status: 'success',
       pdf: fileName,
       resume_name: owner_name,
+      resume_skills: resume_skills
     });
   } catch (error){
       console.error(error);
@@ -196,6 +201,5 @@ router.post('/resume-getowner', upload.single("file"), async (req, res) => {
       fs.unlinkSync(req.file.path); 
   }
 });
-
 
 module.exports = router

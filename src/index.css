@@ -181,3 +181,32 @@ body:has(.card[data-color="green"]:hover) {
   box-shadow: 0.6vmin 0.6vmin #fff, 1vmin 1vmin #d2e4ff, 1vmin 1vmin #d2e4ff,
     0.65vmin 1vmin #d2e4ff, 1vmin 0.65vmin #d2e4ff;
 }
+.put_border_hover{
+  @apply hover:border hover:border-black;
+}
+@keyframes shadow_ani {
+  0%{
+    box-shadow: 0 3px 5px 3px rgba(107, 107, 107, 0.185);
+  }
+  50%{
+    box-shadow: 0px 0px 0px 0px rgba(107, 107, 107, 0.185);
+  }
+  100%{
+    box-shadow: 0 3px 5px 3px rgba(107, 107, 107, 0.185);
+  }
+}
+.shadow_ani{
+  box-shadow: 0 3px 5px 3px rgba(107, 107, 107, 0.178);
+  animation: shadow_ani;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.shadow_ani:hover{
+  cursor: pointer;
+  background-color:  rgba(15, 23, 42, 0.137);
+  color: white;
+  .span_text{
+    color: white;
+  }
+}

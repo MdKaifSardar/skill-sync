@@ -8,6 +8,7 @@ import UserState from './context/userState';
 import ResumeQuery from './components/resumequery';
 import Hrcheck from './components/hrcheck';
 import Loader from './components/loader';
+import Findjobs from './components/findjobs';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path='/resumecheck' element={<Pdfupload/>}/>
                 <Route path='/resumequery' element={<ResumeQuery/>}/>
                 <Route path='/hrresumecheck' element={<Hrcheck/>}/>
+                <Route path='/findjobs' element={<Findjobs/>}/>
             </Routes>
           </UserState>
         </Router>

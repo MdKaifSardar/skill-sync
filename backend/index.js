@@ -4,6 +4,7 @@ const app = express();
 const PORT = 5000;
 var cors = require('cors');
 const ResumeRoute = require('./routes/resume-query');
+const JobRoute = require('./routes/job-finder');
 const dbPass = process.env.MONGODB_PASS;
 
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use("/files", express.static("files"));
 
 app.use('/api/resume', ResumeRoute);
+app.use('/api/job', JobRoute);
 
 app.get('/', (req, res) => {
     res.send("hello the user");

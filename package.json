@@ -29,6 +29,7 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
+    "tailwindcss-base-buttons": "^1.0.1",
     "vite": "^5.3.1"
   }
 }

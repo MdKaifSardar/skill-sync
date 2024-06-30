@@ -9,6 +9,7 @@ const UserState = (props) => {
     const [names, setNames] = useState([]);
     const [checkresult, setCheckresult] = useState('');
     const [queryresult, setQueryresult] = useState('');
+    const [jobs, setJobs] = useState([]);
     const [formData, setFormData] = useState({
       title: '',
       file: '',
@@ -20,6 +21,63 @@ const UserState = (props) => {
       files: [],
       requirements: ''
     });
+
+    const [jobFormData, setJobFormData] = useState({
+      file: '',
+      country: '',
+      city: ''
+    });
+
+    const findJobsFetch = async (e) => {
+      e.preventDefault();
+      const skills = await findSkill();
+      console.log('country: ', jobFormData.country);
+      console.log('city: ', jobFormData.city);
+      console.log('skills: ', skills);
+      
+      await fetchJobs(skills);
+    }
+    const handleJobFormChange = (e) => {
+      setJobFormData({
+        ...jobFormData, 
+        [e.target.name]: e.target.value
+      })
+    }
+
+    const findSkill = async () => {
+      try{
+         const response = await axios.post('http://localhost:5000/api/resume/resume-get-details', jobFormData, {
+             headers: {
+             'Content-Type': 'multipart/form-data',
+             },
+         });
+         return response.data.resume_skills;
+      } catch (error) {
+       console.error('Error querying PDF:', error);
+      }
+    }
+    const fetchJobs = async (skills) => {
+      try{
+        const formData = new FormData();
+        // formData.append('country', jobFormData.country);
+        // formData.append('city', jobFormData.city);
+        // formData.append('skills', skills);
+        // console.log(formData);
+        console.log("the fetchjobs is running");
+        const response = await axios.post('http://localhost:5000/api/job/job-listings', {
+            country: jobFormData.country,
+            city: jobFormData.city,
+            skills: skills
+          }
+        );
+
+        console.log(response.data);
+
+        setJobs(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
     const removeAll = () => {
       setHrFormData({
@@ -79,6 +137,7 @@ const UserState = (props) => {
       setCheckresult(response.data.answer);
       props.setIsLoading(false);
     } catch (error) {
+      props.setIsLoading(false);
       console.error('Error querying PDF:', error);
     }
   }
@@ -118,7 +177,7 @@ const UserState = (props) => {
    try{
     const formData = new FormData();
       formData.append('file', file);
-      const response = await axios.post('http://localhost:5000/api/resume/resume-getowner', formData, {
+      const response = await axios.post('http://localhost:5000/api/resume/resume-get-details', formData, {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
@@ -129,7 +188,7 @@ const UserState = (props) => {
    }
   }
     return (
-        <UserContext.Provider value={{removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
+        <UserContext.Provider value={{findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
             {props.children}
         </UserContext.Provider>
     )
