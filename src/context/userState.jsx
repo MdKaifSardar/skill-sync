@@ -118,10 +118,11 @@ const UserState = (props) => {
 
   const checkResume = async (e) => {
     e.preventDefault();
-    axios.defaults.withCredentials = true
+    axios.defaults.withCredentials = true;
     try {
         props.setIsLoading(true);
-        const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
+        // const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
+        const response = await axios.post(`${host}/resume-check`, formData, {
           headers: {
               'Content-Type': 'multipart/form-data',
           },
