@@ -29,6 +29,8 @@ const UserState = (props) => {
       city: ''
     });
 
+    axios.defaults.withCredentials = true
+
     const findJobsFetch = async (e) => {
       e.preventDefault();
       const skills = await findSkill();
