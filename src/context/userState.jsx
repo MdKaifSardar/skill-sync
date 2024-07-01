@@ -10,7 +10,7 @@ const UserState = (props) => {
     const [checkresult, setCheckresult] = useState('');
     const [queryresult, setQueryresult] = useState('');
     const [jobs, setJobs] = useState([]);
-    const host = 'https://skillsync-api-deployment.vercel.app';
+    const host = 'https://skillsync-api-deployment-pbymu531p-md-kaif-sardars-projects.vercel.app';
     const [formData, setFormData] = useState({
       title: '',
       file: '',
@@ -69,9 +69,9 @@ const UserState = (props) => {
             city: jobFormData.city,
             skills: skills
           },
-          // {
-          //   withCredentials: true  
-          // },
+          {
+            withCredentials: true  
+          },
         );
 
         console.log(response.data);
@@ -115,18 +115,10 @@ const UserState = (props) => {
     };
 
     const handleOnChange = (e) => {
-      // if (e.target.name === 'file') {
-      //   setFormData({
-      //     ...formData,
-      //     [e.target.name]: e.target.files[0]
-      //   });
-      // }
-      // else{
         setFormData({
           ...formData, [e.target.name]: e.target.value
         })
       }
-    // }
 
   const checkResume = async (e) => {
     e.preventDefault();
@@ -136,7 +128,7 @@ const UserState = (props) => {
           headers: {
               'Content-Type': 'multipart/form-data',
           },
-          withCredentials: true  // Ensure credentials are sent with the request
+          withCredentials: true
         }
       );
       setCheckresult(response.data.answer);
@@ -175,10 +167,8 @@ const UserState = (props) => {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
-      },
-      {
-        withCredentials: true  // This enables sending cookies and authentication headers
-      },
+          withCredentials: true,
+      }
     );
       return response.data.answer;
     } catch (error) {
@@ -194,9 +184,7 @@ const UserState = (props) => {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
-      },
-      {
-        withCredentials: true  // This enables sending cookies and authentication headers
+          withCredentials: true
       },
     );
       return response.data.resume_name;
