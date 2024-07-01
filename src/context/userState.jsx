@@ -10,7 +10,7 @@ const UserState = (props) => {
     const [checkresult, setCheckresult] = useState('');
     const [queryresult, setQueryresult] = useState('');
     const [jobs, setJobs] = useState([]);
-    const host = 'http://localhost:5000';
+    const host = 'https://skillsync-api-deployment.vercel.app';
     const [formData, setFormData] = useState({
       title: '',
       file: '',
