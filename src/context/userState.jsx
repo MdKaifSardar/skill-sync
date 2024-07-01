@@ -10,6 +10,7 @@ const UserState = (props) => {
     const [checkresult, setCheckresult] = useState('');
     const [queryresult, setQueryresult] = useState('');
     const [jobs, setJobs] = useState([]);
+    const host = 'http://localhost:5000';
     const [formData, setFormData] = useState({
       title: '',
       file: '',
@@ -46,7 +47,7 @@ const UserState = (props) => {
 
     const findSkill = async () => {
       try{
-         const response = await axios.post('http://localhost:5000/api/resume/resume-get-details', jobFormData, {
+         const response = await axios.post(`${host}/api/resume/resume-get-details`, jobFormData, {
              headers: {
              'Content-Type': 'multipart/form-data',
              },
@@ -64,7 +65,7 @@ const UserState = (props) => {
         // formData.append('skills', skills);
         // console.log(formData);
         console.log("the fetchjobs is running");
-        const response = await axios.post('http://localhost:5000/api/job/job-listings', {
+        const response = await axios.post(`${host}/api/job/job-listings`, {
             country: jobFormData.country,
             city: jobFormData.city,
             skills: skills
@@ -129,7 +130,7 @@ const UserState = (props) => {
     e.preventDefault();
     try {
         props.setIsLoading(true);
-        const response = await axios.post('http://localhost:5000/api/resume/resume-check', formData, {
+        const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
             headers: {
             'Content-Type': 'multipart/form-data',
             },
@@ -145,7 +146,7 @@ const UserState = (props) => {
     e.preventDefault();
     try {
         props.setIsLoading(true);
-        const response = await axios.post('http://localhost:5000/api/resume/resume-query', formData, {
+        const response = await axios.post(`${host}/api/resume/resume-query`, formData, {
             headers: {
             'Content-Type': 'multipart/form-data',
             },
@@ -162,7 +163,7 @@ const UserState = (props) => {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('requirements', hrFormData.requirements);
-      const response = await axios.post('http://localhost:5000/api/resume/hr-resume-check', formData, {
+      const response = await axios.post(`${host}/api/resume/hr-resume-check`, formData, {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
@@ -177,7 +178,7 @@ const UserState = (props) => {
    try{
     const formData = new FormData();
       formData.append('file', file);
-      const response = await axios.post('http://localhost:5000/api/resume/resume-get-details', formData, {
+      const response = await axios.post(`${host}/api/resume/resume-get-details`, formData, {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
