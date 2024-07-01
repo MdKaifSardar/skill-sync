@@ -29,8 +29,6 @@ const UserState = (props) => {
       city: ''
     });
 
-    // axios.defaults.withCredentials = true
-
     const findJobsFetch = async (e) => {
       e.preventDefault();
       const skills = await findSkill();
@@ -49,11 +47,11 @@ const UserState = (props) => {
 
     const findSkill = async () => {
       try{
+          axios.defaults.withCredentials = true
          const response = await axios.post(`${host}/api/resume/resume-get-details`, jobFormData, {
              headers: {
              'Content-Type': 'multipart/form-data',
-             },
-             withCredentials: true
+             }
          }
         );
          return response.data.resume_skills;
@@ -63,15 +61,13 @@ const UserState = (props) => {
     }
     const fetchJobs = async (skills) => {
       try{
+        axios.defaults.withCredentials = true
         console.log("the fetchjobs is running");
         const response = await axios.post(`${host}/api/job/job-listings`, {
             country: jobFormData.country,
             city: jobFormData.city,
             skills: skills
-          },
-          {
-            withCredentials: true  
-          },
+          }
         );
 
         console.log(response.data);
@@ -122,13 +118,13 @@ const UserState = (props) => {
 
   const checkResume = async (e) => {
     e.preventDefault();
+    axios.defaults.withCredentials = true
     try {
         props.setIsLoading(true);
         const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
           headers: {
               'Content-Type': 'multipart/form-data',
           },
-          withCredentials: true
         }
       );
       setCheckresult(response.data.answer);
@@ -140,16 +136,14 @@ const UserState = (props) => {
   }
   const queryResume = async (e) => {
     e.preventDefault();
+    axios.defaults.withCredentials = true
     try {
         props.setIsLoading(true);
         const response = await axios.post(`${host}/api/resume/resume-query`, formData, {
             headers: {
             'Content-Type': 'multipart/form-data',
             },
-        },
-        {
-          withCredentials: true  // This enables sending cookies and authentication headers
-        },
+        }
       );
       setQueryresult(response.data.answer);
       props.setIsLoading(false);
@@ -161,13 +155,13 @@ const UserState = (props) => {
   const hrResumeCheck = async (file) => {
     try {
       const formData = new FormData();
+      axios.defaults.withCredentials = true
       formData.append('file', file);
       formData.append('requirements', hrFormData.requirements);
       const response = await axios.post(`${host}/api/resume/hr-resume-check`, formData, {
           headers: {
           'Content-Type': 'multipart/form-data',
-          },
-          withCredentials: true,
+          }
       }
     );
       return response.data.answer;
@@ -178,13 +172,13 @@ const UserState = (props) => {
 
   const getOwnerName = async (file) => {
    try{
-    const formData = new FormData();
+      const formData = new FormData();
+      axios.defaults.withCredentials = true
       formData.append('file', file);
       const response = await axios.post(`${host}/api/resume/resume-get-details`, formData, {
           headers: {
           'Content-Type': 'multipart/form-data',
-          },
-          withCredentials: true
+          }
       },
     );
       return response.data.resume_name;
