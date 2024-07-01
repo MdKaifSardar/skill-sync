@@ -53,10 +53,8 @@ const UserState = (props) => {
              headers: {
              'Content-Type': 'multipart/form-data',
              },
-         },
-          {
-            withCredentials: true  // This enables sending cookies and authentication headers
-          },
+             withCredentials: true
+         }
         );
          return response.data.resume_skills;
       } catch (error) {
@@ -135,13 +133,12 @@ const UserState = (props) => {
     try {
         props.setIsLoading(true);
         const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
-            headers: {
-            'Content-Type': 'multipart/form-data',
-            },
-        },
-        {
-          withCredentials: true  // This enables sending cookies and authentication headers
-        },);
+          headers: {
+              'Content-Type': 'multipart/form-data',
+          },
+          withCredentials: true  // Ensure credentials are sent with the request
+        }
+      );
       setCheckresult(response.data.answer);
       props.setIsLoading(false);
     } catch (error) {
