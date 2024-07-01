@@ -69,9 +69,9 @@ const UserState = (props) => {
             city: jobFormData.city,
             skills: skills
           },
-          {
-            withCredentials: true  // This enables sending cookies and authentication headers
-          },
+          // {
+          //   withCredentials: true  
+          // },
         );
 
         console.log(response.data);
