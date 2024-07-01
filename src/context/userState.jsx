@@ -29,7 +29,7 @@ const UserState = (props) => {
       city: ''
     });
 
-    axios.defaults.withCredentials = true
+    // axios.defaults.withCredentials = true
 
     const findJobsFetch = async (e) => {
       e.preventDefault();
@@ -53,7 +53,11 @@ const UserState = (props) => {
              headers: {
              'Content-Type': 'multipart/form-data',
              },
-         });
+         },
+          {
+            withCredentials: true  // This enables sending cookies and authentication headers
+          },
+        );
          return response.data.resume_skills;
       } catch (error) {
        console.error('Error querying PDF:', error);
@@ -61,17 +65,15 @@ const UserState = (props) => {
     }
     const fetchJobs = async (skills) => {
       try{
-        const formData = new FormData();
-        // formData.append('country', jobFormData.country);
-        // formData.append('city', jobFormData.city);
-        // formData.append('skills', skills);
-        // console.log(formData);
         console.log("the fetchjobs is running");
         const response = await axios.post(`${host}/api/job/job-listings`, {
             country: jobFormData.country,
             city: jobFormData.city,
             skills: skills
-          }
+          },
+          {
+            withCredentials: true  // This enables sending cookies and authentication headers
+          },
         );
 
         console.log(response.data);
@@ -136,7 +138,10 @@ const UserState = (props) => {
             headers: {
             'Content-Type': 'multipart/form-data',
             },
-        });
+        },
+        {
+          withCredentials: true  // This enables sending cookies and authentication headers
+        },);
       setCheckresult(response.data.answer);
       props.setIsLoading(false);
     } catch (error) {
@@ -152,7 +157,11 @@ const UserState = (props) => {
             headers: {
             'Content-Type': 'multipart/form-data',
             },
-        });
+        },
+        {
+          withCredentials: true  // This enables sending cookies and authentication headers
+        },
+      );
       setQueryresult(response.data.answer);
       props.setIsLoading(false);
     } catch (error) {
@@ -169,7 +178,11 @@ const UserState = (props) => {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
-      });
+      },
+      {
+        withCredentials: true  // This enables sending cookies and authentication headers
+      },
+    );
       return response.data.answer;
     } catch (error) {
       console.error('Error querying PDF:', error);
@@ -184,7 +197,11 @@ const UserState = (props) => {
           headers: {
           'Content-Type': 'multipart/form-data',
           },
-      });
+      },
+      {
+        withCredentials: true  // This enables sending cookies and authentication headers
+      },
+    );
       return response.data.resume_name;
    } catch (error) {
     console.error('Error querying PDF:', error);
