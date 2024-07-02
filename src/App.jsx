@@ -9,7 +9,6 @@ import ResumeQuery from './components/resumequery';
 import Hrcheck from './components/hrcheck';
 import Loader from './components/loader';
 import Findjobs from './components/findjobs';
-import Test from './components/test';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +37,6 @@ const App = () => {
                 <Route path='/resumequery' element={<ResumeQuery/>}/>
                 <Route path='/hrresumecheck' element={<Hrcheck/>}/>
                 <Route path='/findjobs' element={<Findjobs/>}/>
-                <Route path='/test' element={<Test/>}/>
             </Routes>
           </UserState>
         </Router>
