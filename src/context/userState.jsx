@@ -131,7 +131,8 @@ const UserState = (props) => {
         formDataNew.append('requirements', formData.requirements);
         const response = await fetch(`${host}/api/resume/resume-check`, {
           method: 'POST',
-          body: formDataNew
+          body: formDataNew,
+          credentials: 'include'
         });
         const result = await response.json();
         setCheckresult(result.answer);
