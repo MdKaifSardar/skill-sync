@@ -116,13 +116,21 @@ const UserState = (props) => {
         })
       }
 
+  const testFunc = async (e) => {
+    try{
+      const response = await axios.post(`${host}/temp-fetch`)
+      console.log(response.data);
+    } catch (error){
+      console.error(error);
+    }
+  }
+
   const checkResume = async (e) => {
     e.preventDefault();
     axios.defaults.withCredentials = true;
     try {
         props.setIsLoading(true);
-        // const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
-        const response = await axios.post(`${host}/resume-check`, formData, {
+        const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
           headers: {
               'Content-Type': 'multipart/form-data',
           },
@@ -188,7 +196,7 @@ const UserState = (props) => {
    }
   }
     return (
-        <UserContext.Provider value={{findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
+        <UserContext.Provider value={{testFunc, findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
             {props.children}
         </UserContext.Provider>
     )

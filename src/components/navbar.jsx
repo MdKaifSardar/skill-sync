@@ -37,6 +37,9 @@ const Navbar = () => {
                 <NavLink to='/findjobs' className={({isActive}) => isActive?'text-blue-500':'text-black-500'}>
                     Find Jobs
                 </NavLink>
+                <NavLink to='/test' className={({isActive}) => isActive?'text-blue-500':'text-black-500'}>
+                    Test
+                </NavLink>
             </nav>
 
             <nav className='navbar_item_list'>
