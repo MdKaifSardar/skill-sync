@@ -132,7 +132,10 @@ const UserState = (props) => {
         const response = await fetch(`${host}/api/resume/resume-check`, {
           method: 'POST',
           body: formDataNew,
-          credentials: 'include'
+          credentials: 'include',
+          headers: {
+            "Access-Control-Allow-Origin": "https://skill-sync-jet.vercel.app",
+          }
         });
         const result = await response.json();
         setCheckresult(result.answer);
