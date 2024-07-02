@@ -1,5 +1,4 @@
 import React, { useState} from "react";
-import axios from 'axios';
 import UserContext from "./userContext";
 
 
@@ -31,12 +30,14 @@ const UserState = (props) => {
 
     const findJobsFetch = async (e) => {
       e.preventDefault();
+      props.setIsLoading(true);
       const skills = await findSkill();
       console.log('country: ', jobFormData.country);
       console.log('city: ', jobFormData.city);
       console.log('skills: ', skills);
       
       await fetchJobs(skills);
+      props.setIsLoading(false);
     }
     const handleJobFormChange = (e) => {
       setJobFormData({
@@ -47,32 +48,37 @@ const UserState = (props) => {
 
     const findSkill = async () => {
       try{
-          axios.defaults.withCredentials = true
-         const response = await axios.post(`${host}/api/resume/resume-get-details`, jobFormData, {
-             headers: {
-             'Content-Type': 'multipart/form-data',
-             }
-         }
-        );
-         return response.data.resume_skills;
+        const formData = new FormData();
+        formData.append('file', jobFormData.file);
+        const response = await fetch(`${host}/api/resume/resume-get-details`, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+        return data.resume_skills;
       } catch (error) {
        console.error('Error querying PDF:', error);
       }
     }
     const fetchJobs = async (skills) => {
       try{
-        axios.defaults.withCredentials = true
         console.log("the fetchjobs is running");
-        const response = await axios.post(`${host}/api/job/job-listings`, {
+        const response = await fetch(`${host}/api/job/job-listings`, {
+          method: "POST", 
+          headers: { 
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
             country: jobFormData.country,
             city: jobFormData.city,
             skills: skills
-          }
-        );
+          }), 
+        }); 
+        const json = await response.json();
 
-        console.log(response.data);
+        console.log(json.results);
 
-        setJobs(response.data);
+        setJobs(json.results);
       } catch (error) {
         console.error(error);
       }
@@ -116,28 +122,20 @@ const UserState = (props) => {
         })
       }
 
-  const testFunc = async (e) => {
-    try{
-      const response = await axios.post(`${host}/temp-fetch`)
-      console.log(response.data);
-    } catch (error){
-      console.error(error);
-    }
-  }
-
   const checkResume = async (e) => {
     e.preventDefault();
-    axios.defaults.withCredentials = true;
     try {
         props.setIsLoading(true);
-        const response = await axios.post(`${host}/api/resume/resume-check`, formData, {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
-      setCheckresult(response.data.answer);
-      props.setIsLoading(false);
+        const formDataNew = new FormData();
+        formDataNew.append('file', formData.file);
+        formDataNew.append('requirements', formData.requirements);
+        const response = await fetch(`${host}/api/resume/resume-check`, {
+          method: 'POST',
+          body: formDataNew
+        });
+        const result = await response.json();
+        setCheckresult(result.answer);
+        props.setIsLoading(false);
     } catch (error) {
       props.setIsLoading(false);
       console.error('Error querying PDF:', error);
@@ -145,16 +143,17 @@ const UserState = (props) => {
   }
   const queryResume = async (e) => {
     e.preventDefault();
-    axios.defaults.withCredentials = true
     try {
         props.setIsLoading(true);
-        const response = await axios.post(`${host}/api/resume/resume-query`, formData, {
-            headers: {
-            'Content-Type': 'multipart/form-data',
-            },
-        }
-      );
-      setQueryresult(response.data.answer);
+        const formDataNew = new FormData();
+        formDataNew.append('file', formData.file);
+        formDataNew.append('query', formData.query);
+        const response = await fetch(`${host}/api/resume/resume-query`, {
+          method: 'POST',
+          body: formDataNew
+        });
+        const result = await response.json(); 
+      setQueryresult(result.answer);
       props.setIsLoading(false);
     } catch (error) {
       console.error('Error querying PDF:', error);
@@ -163,17 +162,17 @@ const UserState = (props) => {
 
   const hrResumeCheck = async (file) => {
     try {
-      const formData = new FormData();
-      axios.defaults.withCredentials = true
-      formData.append('file', file);
-      formData.append('requirements', hrFormData.requirements);
-      const response = await axios.post(`${host}/api/resume/hr-resume-check`, formData, {
-          headers: {
-          'Content-Type': 'multipart/form-data',
-          }
-      }
-    );
-      return response.data.answer;
+      props.setIsLoading(true);
+      const formDataNew = new FormData();
+      formDataNew.append('file', file);
+      formDataNew.append('requirements', hrFormData.requirements);
+      const response = await fetch(`${host}/api/resume/hr-resume-check`, {
+        method: 'POST',
+        body: formDataNew
+      });
+      const result = await response.json(); 
+      props.setIsLoading(false);
+      return result.answer;
     } catch (error) {
       console.error('Error querying PDF:', error);
     }
@@ -181,22 +180,20 @@ const UserState = (props) => {
 
   const getOwnerName = async (file) => {
    try{
-      const formData = new FormData();
-      axios.defaults.withCredentials = true
-      formData.append('file', file);
-      const response = await axios.post(`${host}/api/resume/resume-get-details`, formData, {
-          headers: {
-          'Content-Type': 'multipart/form-data',
-          }
-      },
-    );
-      return response.data.resume_name;
+      const formDataNew = new FormData();
+      formDataNew.append('file', file);
+      const response = await fetch(`${host}/api/resume/resume-get-details`, {
+        method: 'POST',
+        body: formDataNew
+      });
+      const result = await response.json(); 
+      return result.resume_name;
    } catch (error) {
     console.error('Error querying PDF:', error);
    }
   }
     return (
-        <UserContext.Provider value={{testFunc, findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
+        <UserContext.Provider value={{findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
             {props.children}
         </UserContext.Provider>
     )

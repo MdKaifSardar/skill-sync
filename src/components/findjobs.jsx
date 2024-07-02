@@ -40,6 +40,7 @@ const Findjobs = () => {
                         file: e.target.files[0]
                     })
                 }} 
+                accept='application/pdf'
                 type="file" 
                 className='bg-white hover:cursor-pointer' 
                 name="file" 

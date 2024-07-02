@@ -42,8 +42,8 @@ const Hrcheck = () => {
                 />
             {/* </div> */}
             <div className='flex flex-row justify-center items-center gap-3'>
-                <button className='btn' type='submit'>Check</button>
-                <button className='btn' onClick={removeAll}>Remove All</button>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type='submit'>Check</button>
+                <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' onClick={removeAll}>Remove All</button>
             </div>
           </form>
 
@@ -51,7 +51,7 @@ const Hrcheck = () => {
           {
             hrFormData.files.length > 0 && isSubmitted ? (
             <ul className='flex flex-col gap-5 mt-3 p-3 bg-slate-300/30 shadow rounded-md'>
-                {hrFormData.files.map((index) => (
+                {hrFormData.files.map((file, index) => (
                     <li className='flex flex-col bg-slate-400/30 text-2xl rounded-md shadow p-3 font-sans font-semibold' key={index}>
                         {names[index]}
                         <p style={{ whiteSpace: 'pre-wrap' }} className='mt-2 p-2 text-xl font-bold text-slate-600/70 rounded-md'>

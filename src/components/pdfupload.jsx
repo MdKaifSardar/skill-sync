@@ -7,7 +7,7 @@ const Pdfupload = () => {
   const {setFormData, handleOnChange, formData, checkResume, checkresult} = context;
     return (
         <div className='p-10 rounded-2xl bg-slate-300/10 shadow mr-auto ml-auto flex flex-col justify-center items-center w-4/5 h-fit mt-20 mb-4'>
-        <span className='text-5xl blue-gradient_text font-bold'>Check Your Resume</span>
+        <span className='md:text-5xl text-3xl blue-gradient_text font-bold'>Check Your Resume</span>
           <form className='p-5 flex flex-col justify-center items-center gap-2' onSubmit={checkResume}>
             <textarea 
               type="text" 
