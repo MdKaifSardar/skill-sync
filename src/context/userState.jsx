@@ -9,7 +9,7 @@ const UserState = (props) => {
     const [checkresult, setCheckresult] = useState('');
     const [queryresult, setQueryresult] = useState('');
     const [jobs, setJobs] = useState([]);
-    const host = 'https://skillsync-api-deployment.vercel.app';
+    // const host = 'https://skillsync-api-deployment.vercel.app';
     const [formData, setFormData] = useState({
       title: '',
       file: '',
@@ -50,7 +50,7 @@ const UserState = (props) => {
       try{
         const formData = new FormData();
         formData.append('file', jobFormData.file);
-        const response = await fetch(`${host}/api/resume/resume-get-details`, {
+        const response = await fetch(`/api/resume/resume-get-details`, {
           method: 'POST',
           body: formData
         });
@@ -63,7 +63,7 @@ const UserState = (props) => {
     const fetchJobs = async (skills) => {
       try{
         console.log("the fetchjobs is running");
-        const response = await fetch(`${host}/api/job/job-listings`, {
+        const response = await fetch(`/api/job/job-listings`, {
           method: "POST", 
           headers: { 
             "Content-Type": "application/json"
@@ -129,7 +129,7 @@ const UserState = (props) => {
         const formDataNew = new FormData();
         formDataNew.append('file', formData.file);
         formDataNew.append('requirements', formData.requirements);
-        const response = await fetch(`${host}/api/resume/resume-check`, {
+        const response = await fetch(`/api/resume/resume-check`, {
           method: 'POST',
           body: formDataNew,
           credentials: 'include'
@@ -149,7 +149,7 @@ const UserState = (props) => {
         const formDataNew = new FormData();
         formDataNew.append('file', formData.file);
         formDataNew.append('query', formData.query);
-        const response = await fetch(`${host}/api/resume/resume-query`, {
+        const response = await fetch(`/api/resume/resume-query`, {
           method: 'POST',
           body: formDataNew
         });
@@ -167,7 +167,7 @@ const UserState = (props) => {
       const formDataNew = new FormData();
       formDataNew.append('file', file);
       formDataNew.append('requirements', hrFormData.requirements);
-      const response = await fetch(`${host}/api/resume/hr-resume-check`, {
+      const response = await fetch(`/api/resume/hr-resume-check`, {
         method: 'POST',
         body: formDataNew
       });
@@ -183,7 +183,7 @@ const UserState = (props) => {
    try{
       const formDataNew = new FormData();
       formDataNew.append('file', file);
-      const response = await fetch(`${host}/api/resume/resume-get-details`, {
+      const response = await fetch(`/api/resume/resume-get-details`, {
         method: 'POST',
         body: formDataNew
       });
