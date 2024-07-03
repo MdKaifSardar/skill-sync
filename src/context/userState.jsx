@@ -129,7 +129,7 @@ const UserState = (props) => {
         const formDataNew = new FormData();
         formDataNew.append('file', formData.file);
         formDataNew.append('requirements', formData.requirements);
-        const response = await fetch(`/api/resume-check`, {
+        const response = await fetch(`/api/resume/resume-check`, {
           method: 'POST',
           body: formDataNew
         });
@@ -156,6 +156,7 @@ const UserState = (props) => {
       setQueryresult(result.answer);
       props.setIsLoading(false);
     } catch (error) {
+      props.setIsLoading(false);
       console.error('Error querying PDF:', error);
     }
   }
