@@ -130,7 +130,7 @@ const UserState = (props) => {
         formDataNew.append('file', formData.file);
         formDataNew.append('requirements', formData.requirements);
         const response = await fetch(`/api/resume/resume-check`, {
-          method: 'GET',
+          method: 'POST',
           body: formDataNew
         });
         const result = await response.json();
