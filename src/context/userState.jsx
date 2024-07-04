@@ -1,15 +1,16 @@
 import React, { useState} from "react";
 import UserContext from "./userContext";
+import { useNavigate } from "react-router-dom";
 
 
 const UserState = (props) => {
+  let navigate = useNavigate();
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [resumeResults, setResumeResults] = useState([]);
     const [names, setNames] = useState([]);
     const [checkresult, setCheckresult] = useState('');
     const [queryresult, setQueryresult] = useState('');
     const [jobs, setJobs] = useState([]);
-    // const host = 'https://skillsync-api-deployment.vercel.app';
     const [formData, setFormData] = useState({
       title: '',
       file: '',
@@ -27,6 +28,15 @@ const UserState = (props) => {
       country: '',
       city: ''
     });
+
+
+    const checkLogin = () => {
+      console.log(localStorage.getItem('token'));
+      if(!localStorage.getItem('token')){
+          props.showAlert("Login first to use the tools", "danger");
+          navigate("/login");
+      }
+    }
 
     const findJobsFetch = async (e) => {
       e.preventDefault();
@@ -194,7 +204,7 @@ const UserState = (props) => {
    }
   }
     return (
-        <UserContext.Provider value={{findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
+        <UserContext.Provider value={{checkLogin, findJobsFetch, jobFormData, setJobFormData, handleJobFormChange, findSkill, jobs, fetchJobs, removeAll, names, getOwnerName, resumeResults, isSubmitted, handleSubmit, handleFileChange, handleInputChange, hrResumeCheck, setHrFormData, hrFormData, queryResume, setFormData, handleOnChange, formData, checkResume, checkresult, queryresult}}>
             {props.children}
         </UserContext.Provider>
     )

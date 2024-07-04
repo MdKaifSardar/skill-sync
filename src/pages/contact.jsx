@@ -39,7 +39,7 @@ const Contact = (props) => {
     validateEmailAndMessage(userMsg.email, userMsg.message);
     console.log(isValid, isNotEmpty);
     if(isValid && isNotEmpty){
-      setIsLoading(true);
+      props.setIsLoading(true);
       console.log("the btn is pressed");
 
       emailjs.send(
@@ -63,7 +63,7 @@ const Contact = (props) => {
           email: '',
         });
       }).catch((error) => {
-        setIsLoading(false);
+        props.setIsLoading(false);
         props.showAlert(error, 'warning');
       })
     }
@@ -72,7 +72,7 @@ const Contact = (props) => {
     }
   }
   return (
-    <section className=' pt-24 relative flex flex-col justify-center items-center h-full'>
+    <section className='pt-28 relative flex flex-col justify-center items-center h-full'>
         <h1 className='head-text blue-gradient_text cotact_page_heading'>Get in touch</h1>
         <div className='flex flex-wrap gap-10 mt-auto justify-center items-center'>
           {
@@ -97,7 +97,7 @@ const Contact = (props) => {
             ))
           }
         </div>
-        <form className='contact_form flex flex-col p-10 rounded-2xl text-lg font-sans font-bold mt-10 mb-10'>
+        <form className='flex flex-col p-10 rounded-2xl md:w-1/3 text-lg font-sans font-bold my-10 bg-slate-300/20 shadow'>
         <div className='flex flex-col gap-2 w-auto'>
             <label className='blue-gradient_text text-slim' htmlFor="email">Name:</label>
             <input

@@ -8,7 +8,7 @@ const JobBox = () => {
     const context = useContext(UserContext);
     const {fetchJobs, jobs} = context;
   return (
-    <div className='flex flex-col gap-4 justify-center items-center mt-3'>
+    <div className='flex flex-col gap-4 justify-center items-center sm:mt-5 mt-3 w-4/5'>
           {jobs.map((job, index) => (
             //jobs delatils box:
             <div key={index} className='job_card md:flex-row md:items-stretch flex flex-col gap-3 justify-stretch items-center p-3 text-md rounded-xl w-[100%] bg-slate-400/20'>
@@ -54,7 +54,7 @@ const JobBox = () => {
                             </span>
                         </div>
                     }
-                    <Link className='mt-2 bg-blue-900/100 p-2 text-white text-xl font-semibold h-fit w-fit rounded-xl' to={job.redirect_url}>
+                    <Link className='mt-2 ml-auto mr-auto w-fit bg-gradient-to-r from-blue-400 to-blue-500 p-2 font-sans text-semibold text-white hover:from-blue-700/80 hover:to-blue-600/60 rounded-2xl shadow' to={job.redirect_url}>
                         Visit Site
                     </Link>
                 </div>

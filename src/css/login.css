@@ -1,0 +1,140 @@
+.rightLoginBox{
+    border-radius: 0 1rem 1rem 0;
+    padding: 0 20px;
+    height: 70vh;
+    width: 12vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+}
+.leftLoginBox{
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    height: 70vh;
+    border-radius: 1rem 0 0 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+.loginHeading{
+    padding: 4px;
+    border-radius: .5rem;
+    background-color: white;
+    opacity: 50%;
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    font-weight: 600;
+}
+.input_pass{
+    border-radius: 0px;
+    display: block;
+    border: none;
+    color: black;
+    background-color: white;
+}
+.input_email{
+    border-radius: 0px;
+    display: block;
+    border: none;
+    color: black;
+    background-color: white;
+}
+.bottomLeft{
+    border-radius: 0 0 0 1rem;
+    box-shadow: 
+    -5px 5px 15px rgba(0, 0, 0, 0.2), /* Left shadow */
+    5px 5px 15px rgba(0, 0, 0, 0.2);  /* Bottom shadow */   
+    position: relative;
+    right: 59px;
+    bottom: -50px;
+    height: 20%;
+    width: 70%;
+    background-color: white;
+    opacity: 50%;
+
+}
+.topRight{
+    border-radius: 0 1rem 0 0;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.2), 5px 5px 15px rgba(0, 0, 0, 0.2);   
+    position: relative;
+    left: 59px;
+    top: -50px;
+    height: 20%;
+    width: 70%;
+    background-color: white;
+    opacity: 50%;
+
+}
+.login_right_text2{
+    display: none;
+    font-size: 1.2rem;
+    color: blueviolet;
+    padding: 10px;
+    background-color: white;
+    opacity: 60%;
+    border-radius: 1rem 0 1rem 0;
+    justify-content: center;
+    font-weight: 700;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.login_right_text1{
+    font-size: 1.2rem;
+    color: blueviolet;
+    display: flex;
+    padding: 10px;
+    background-color: white;
+    opacity: 60%;
+    border-radius: 1rem 0 1rem 0;
+    justify-content: center;
+    font-weight: 700;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.login_button{
+    background-color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    border-radius: 1rem;
+    pad: 2px;
+}
+.login_button:hover{
+    background-color: rgba(137, 43, 226, 0.61);
+}
+@media (max-width: 1195px) {
+    .login_right_text1{
+        display: none;
+    }
+    .login_right_text2{
+        display: flex;
+    }
+    .topRight{
+        position: relative;
+        height: 35%;
+    }
+    .bottomLeft{
+        position: relative;
+        height: 35%;
+    }
+}
+
+@media (max-width: 1011px) {
+    .rightLoginBox{
+        display: none;
+    }
+    .leftLoginBox{
+        border-radius: 1rem;
+    }
+}

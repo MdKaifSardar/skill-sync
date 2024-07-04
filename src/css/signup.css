@@ -1,0 +1,220 @@
+
+.mainDivSignUp{
+    margin: 70px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+.signupForm{
+    color: rgb(21, 0, 41);
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 1rem 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    height: fit-content;
+    padding: 20px;
+    background-color: rgb(179, 102, 250);
+}
+.signUpButton{
+    background-color: rgb(76, 0, 148);
+    color: white;
+    font-weight: 500;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+}
+.signUpButton:hover{
+    background-color: rgba(76, 0, 148, 0.514);
+    color: white;
+}
+.signUpHeading{
+    color: white;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    border-radius: 2rem;
+    border: 2px solid white;
+    margin: 0 0 10px 0;
+}
+.descSignUp{
+    color: white;
+    text-align: center;
+    font-weight: 200;
+    font-size: 1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+}
+.visible{
+    color: white;
+    display: block;
+    margin: 1rem 0 0 0;
+    border-radius: 1rem;
+    animation: increaseHeight;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: initial;
+    background-color: rgb(75, 3, 143);
+    padding: 20px;
+    text-align: center;
+    transform-origin: top;
+}
+.invisible{
+    display: none;
+}
+@keyframes increaseHeight {
+    0% {
+      transform: scaleY(0);
+        opacity: 0;
+        height: 0rem;
+    }
+    60%{
+      height: 6rem;
+    }
+    100% {
+      transform: scaleY(1);
+        opacity: 1;
+    }
+  }
+  .signUpInputBox{
+    border-radius: 0px;
+  }
+  .sideSignUpBoxVisible{
+    margin: 0 0 0 .3rem;
+    border-radius: 1rem;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    animation: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgb(75, 0, 145);
+    height: 22rem;
+    width: 20rem;
+    padding: 20px;
+    transform-origin: left;
+  }
+  @keyframes fadeIn {
+    0%{
+        transform: scaleX(0);
+        padding:0;
+        opacity: 0;
+    }
+    100%{
+        transform: scaleX(1);
+        padding: 20px;
+        opacity: 1;
+    }
+  }
+  @keyframes fadeOut {
+    0%{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      transform: scaleX(1);
+  }
+  99%{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  100%{
+    transform: scaleX(0);
+    display: none;
+  }
+  }
+  .sideSignUpBoxInvisible{
+    width: 20rem;
+    padding: 10px;
+    margin: 0 0 0 .3rem;
+    border-radius: 1rem;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    height: 22rem;
+    width: 20rem;
+    padding: 20px;
+    background-color: rgb(75, 0, 145);
+    transform-origin: left;
+    animation: fadeOut;
+    animation-duration: 1s;
+    display: none;
+    transform: scaleX(0);
+    animation-timing-function: linear;
+  }
+  .boxUl{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .arrowRigthFeatureBox{
+    width: 30px;
+    height: 30px;
+  }
+  .divBtnFeatures{
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: blueviolet;
+    border-radius: 0 1rem 1rem 0;
+  }
+  .divBtnFeatures:hover{
+    cursor: pointer;
+    background-color: rgb(73, 2, 139);
+  }
+  .features{
+    background-color: blueviolet;
+    padding: 5px;
+    border-radius: 1rem;
+    margin: 1rem 0;
+  }
+  .headingFeatures{
+    border: 1px sold white;
+    padding: 4px;
+  }
+  @media (max-width: 590px) {
+    .sideSignUpBoxVisible{
+      display: none;
+    }
+    .divBtnFeatures{
+      display: none;
+    }
+    .signupForm{
+      border-radius: 1rem;
+      width: 18rem;
+    }
+}
+.altDiv{
+  display: none;
+}
+@media (min-height: 700px) {
+  .visible{
+    display: none;
+  }
+  .altDiv{
+    color: white;
+    display: block;
+    margin: 1rem 0 0 0;
+    border-radius: 1rem;
+    background-color: rgb(75, 3, 143);
+    padding: 20px;
+    text-align: center;
+  }
+}

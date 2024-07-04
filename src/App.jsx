@@ -9,6 +9,9 @@ import ResumeQuery from './components/resumequery';
 import Hrcheck from './components/hrcheck';
 import Loader from './components/loader';
 import Findjobs from './components/findjobs';
+import AuthState from './context/authState';
+import Login from './components/login';
+import Signup from './components/signup';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,20 +28,24 @@ const App = () => {
   return (
     <main>
         <Router>
-          <UserState showAlert={showAlert} setIsLoading={setIsLoading}>
-            <Navbar/>
-            {isLoading && <Loader/>}
-            <Alert alert={alert} />
-            <Routes>
-                <Route path='/' element={<Home />}/>
-                <Route path='/about' element={<About/>}/>
-                <Route path='/contact' element={<Contact showAlert={showAlert} setIsLoading={setIsLoading}/>}/>
-                <Route path='/resumecheck' element={<Pdfupload/>}/>
-                <Route path='/resumequery' element={<ResumeQuery/>}/>
-                <Route path='/hrresumecheck' element={<Hrcheck/>}/>
-                <Route path='/findjobs' element={<Findjobs/>}/>
-            </Routes>
-          </UserState>
+          <AuthState showAlert={showAlert} setIsLoading={setIsLoading}>
+            <UserState showAlert={showAlert} setIsLoading={setIsLoading}>
+              <Navbar/>
+              {isLoading && <Loader/>}
+              <Alert alert={alert} />
+              <Routes>
+                  <Route path='/' element={<Home />}/>
+                  <Route path='/about' element={<About/>}/>
+                  <Route path='/contact' element={<Contact showAlert={showAlert} setIsLoading={setIsLoading}/>}/>
+                  <Route path='/resumecheck' element={<Pdfupload/>}/>
+                  <Route path='/resumequery' element={<ResumeQuery/>}/>
+                  <Route path='/hrresumecheck' element={<Hrcheck/>}/>
+                  <Route path='/findjobs' element={<Findjobs/>}/>
+                  <Route path='/login' element={<Login showAlert={showAlert} setIsLoading={setIsLoading}/>}/>
+                  <Route path='/signup' element={<Signup showAlert={showAlert} setIsLoading={setIsLoading}/>}/>
+              </Routes>
+            </UserState>
+          </AuthState>
         </Router>
     </main> 
   )
