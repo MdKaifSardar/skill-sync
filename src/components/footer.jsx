@@ -17,7 +17,7 @@ const Footer = () => {
               </Link>
             </div>
             <div>
-              <Link target="_blank" rel="noopener noreferrer" className='gap-1 hover:text-blue-700 flex flex-row justify-center items-center hover:cursor-pointer' to='www.linkedin.com/in/md-kaif-sardar-12aab4290'>
+              <Link target="_blank" rel="noopener noreferrer" className='gap-1 hover:text-blue-700 flex flex-row justify-center items-center hover:cursor-pointer' to='https://www.linkedin.com/in/md-kaif-sardar-12aab4290/'>
                 <i className="fa-brands fa-linkedin"></i>
                 <div>LinkedIn</div>
                 <div>
