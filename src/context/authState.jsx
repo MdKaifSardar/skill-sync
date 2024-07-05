@@ -18,10 +18,17 @@ const AuthState = (props) => {
           },
         });
         const json = await response.json();
+        const dateString = json.userFound.date;
+        const date = new Date(dateString);
+        const year = date.getUTCFullYear();
+        const month = date.getMonth();
+        const day = date.getDate();
         if(json.success){
             localStorage.setItem('user_name', json.userFound.name);
             localStorage.setItem('user_email', json.userFound.email);
-            localStorage.setItem('user_date', json.userFound.date);
+            localStorage.setItem('user_year', year);
+            localStorage.setItem('user_month', month);
+            localStorage.setItem('user_day', day);
         }
         if(!json.success){
             props.showAlert(json.error, "danger");

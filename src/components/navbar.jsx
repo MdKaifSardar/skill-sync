@@ -53,7 +53,7 @@ const Navbar = () => {
             </nav>
 
             <nav className='navbar_item_list'>
-                <div className={`${isOpen?'flex flex-col justify-center items-center gap-2 py-2 shadow bg-white absolute top-20 left-24 rounded-xl px-4':'nav_list_closed'}`}>
+                <div className={`${isOpen?'flex flex-col justify-center items-center gap-2 py-2 shadow bg-white absolute top-20 left-20 rounded-xl px-4':'nav_list_closed'}`}>
                     <NavLink to='/about' className={({isActive}) => isActive?'text-blue-500':'text-black-500'}>
                         About
                     </NavLink>
@@ -74,8 +74,12 @@ const Navbar = () => {
         </div>
         <div className='flex flex-row items-center sm:gap-3 gap-2'>
             <nav>
-                <div onClick={handleOnClickTools} className='h-10 w-10 flex flex-row justify-center items-center p-2 rounded-3xl shadow'>
-                    <i className="fa-solid fa-screwdriver-wrench"></i>
+                <div onClick={handleOnClickTools} className='flex flex-row justify-center items-center rounded-3xl shadow px-2 hover:cursor-pointer'>
+                    <div className='text-sans'>Tools</div>
+                    <div className='flex flex-row justify-center items-center h-10 w-10'>
+                        <i className="fa-solid fa-screwdriver-wrench"></i>
+                    </div>  
+                </div>
                     {
                         toolsIsOpen && localStorage.getItem('token')?
                         <nav className='bg-white flex flex-col shadow justify-center items-center gap-2 p-3 absolute top-20 md:right-16 lg:right-28 right-12 rounded-xl'>
@@ -98,23 +102,27 @@ const Navbar = () => {
                         </nav>
                         : null
                     }
-                </div>
             </nav>
             <nav>
-                <div onClick={handleOnClickProfile} className='p-2 w-10 h-10 flex flex-row justify-center items-center rounded-3xl shadow'>
+                <div onClick={handleOnClickProfile} className='p-2 w-10 h-10 flex flex-row justify-center items-center rounded-3xl shadow hover:cursor-pointer'>
                     <i className="fa-solid fa-user"></i>
                     {
                         profileIsOpen && localStorage.getItem('token')?  
                         <div className='absolute top-20 right-2 flex flex-col justify-centeritems-center p-3 bg-white shadow rounded-xl sm:text-sm gap-2'>
                             <span className='flex flex-wrap'><span className='font-bold font-sans'>Username: </span> {localStorage.getItem('user_name')}</span>
                             <span className='flex flex-wrap'><span className='font-bold font-sans'>Email: </span> {localStorage.getItem('user_email')}</span>
-                            <span className='flex flex-wrap'><span className='font-bold font-sans'>Date Created: </span> {localStorage.getItem('user_date')}</span>
+                            <span className='flex flex-wrap'>
+                                <span className='font-bold font-sans'>
+                                Date Created: 
+                                </span>
+                                    {localStorage.getItem('user_day')}/{localStorage.getItem('user_month')}/{localStorage.getItem('user_year')}
+                            </span>
                             <button className='p-2 w-fit h-fit bg-red-500 text-white font-bold font-sans mr-auto ml-auto rounded-xl shadow hover:bg-red-500/70' onClick={logout}>
                                 logout
                             </button>
                         </div>
                         :profileIsOpen
-                        ?<p className='absolute top-20 right-10 flex flex-col justify-center  items-center p-3 bg-white sm:text-sm gap-2 rounded-xl'>
+                        ?<p className='rounded-xl bg-white text-black shadow flex flex-col justify-center items-center gap-2 p-3 absolute top-20 right-5'>
                             Login to see your profile
                         </p>
                         :null

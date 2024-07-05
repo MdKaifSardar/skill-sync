@@ -24,10 +24,8 @@ const Contact = (props) => {
 
   useEffect(() => {
     validateEmailAndMessage(userMsg.email, userMsg.message);
-    console.log(isValid, isNotEmpty);
   }, [userMsg.email]);
 
-  const [isLoading, setIsLoading] = useState(false);
   const handleOnChange = (e) => {
     setUserMsg({
       ...userMsg, [e.target.name]: e.target.value
@@ -37,7 +35,6 @@ const Contact = (props) => {
   const handleOnSubmit = (e) => { 
     e.preventDefault();
     validateEmailAndMessage(userMsg.email, userMsg.message);
-    console.log(isValid, isNotEmpty);
     if(isValid && isNotEmpty){
       props.setIsLoading(true);
       console.log("the btn is pressed");
@@ -54,7 +51,7 @@ const Contact = (props) => {
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       ).then(() => {
-        setIsLoading(false);
+        props.setIsLoading(false);
         props.showAlert("the email has been sent", 'success');
 
         setUserMsg({
@@ -72,9 +69,9 @@ const Contact = (props) => {
     }
   }
   return (
-    <section className='pt-28 relative flex flex-col justify-center items-center h-full'>
+    <section className='mt-32 relative flex flex-col justify-center items-center h-full shadow p-2 sm:w-4/5 w-[90%] ml-auto mr-auto rounded-2xl bg-slate-300/20'>
         <h1 className='head-text blue-gradient_text cotact_page_heading'>Get in touch</h1>
-        <div className='flex flex-wrap gap-10 mt-auto justify-center items-center'>
+        <div className='flex flex-wrap gap-2 mt-auto justify-center items-center'>
           {
             socialLinks.map((link, index) => (
               <div key={index} className='btn-back flex flex-col p-10 gap-4 h-fit justify-center items-center rounded-xl'>
@@ -97,11 +94,14 @@ const Contact = (props) => {
             ))
           }
         </div>
-        <form className='flex flex-col p-10 rounded-2xl md:w-1/3 text-lg font-sans font-bold my-10 bg-slate-300/20 shadow'>
+        <form className='flex flex-col p-10 rounded-2xl md:w-1/3 text-lg font-sans font-bold mb-10 mt-2 bg-slate-300/20 shadow bg-gradient-to-r from-blue-500 to-blue-300'>
+        <div className='mb-2 text-center mr-auto ml-auto sm:text-2xl text-xl text-white'>
+          Send Me a Mail:
+        </div>
         <div className='flex flex-col gap-2 w-auto'>
-            <label className='blue-gradient_text text-slim' htmlFor="email">Name:</label>
+            <label className='text-white font-thin' htmlFor="email">Name:</label>
             <input
-              className='border-1 p-1 text-thin input_text_contact focus:outline-none'
+              className='border-1 p-1 font-thin input_text_contact focus:outline-none'
               id="name"
               name="name"
               value={userMsg.name}
@@ -111,9 +111,9 @@ const Contact = (props) => {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <label className='blue-gradient_text' htmlFor="email">Email:</label>
+            <label className='text-white font-thin' htmlFor="email">Email:</label>
             <input
-              className='border-1 p-1 text-thin input_text_contact focus:outline-none'
+              className='border-1 p-1 font-thin input_text_contact focus:outline-none'
               type="email"
               id="email"
               name="email"
@@ -124,9 +124,9 @@ const Contact = (props) => {
           </div>
 
           <div className='flex flex-col gap-2'>
-            <label className='blue-gradient_text' htmlFor="message">Message:</label>
+            <label className='text-white font-thin' htmlFor="message">Message:</label>
             <textarea
-              className='border-1 p-1 text-thin input_text_contact focus:outline-none'
+              className='border-1 p-1 font-thin input_text_contact focus:outline-none'
               id="message"
               name="message"
               value={userMsg.message}
@@ -134,7 +134,7 @@ const Contact = (props) => {
               required
             />
           </div>
-          <button disabled={userMsg.email === ''?1:0} className='contact_sendemail_btn' onClick={handleOnSubmit}>Send</button>
+          <button disabled={userMsg.email === ''?1:0} className='hover:cursor-pointer mt-2 ml-auto mr-auto w-fit bg-gradient-to-r from-blue-600 to-sky-400 py-2 px-3 font-sans text-white hover:from-blue-400 hover:to-sky-600 rounded-2xl shadow' onClick={handleOnSubmit}>Send</button>
         </form>
     </section>
   )
