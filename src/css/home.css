@@ -9,3 +9,9 @@
         margin: 0;
     }
 } 
+.home_bg{
+    background-image: url('../public/skillsyncback.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

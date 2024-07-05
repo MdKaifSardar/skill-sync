@@ -26,19 +26,24 @@ const Signup = (props) => {
     window.addEventListener('scroll', handleScroll);
   }, []);
   return (
-    <div className="mainDivSignUp mt-28">
-      <form onSubmit={handleSubmitSignup} className="signupForm">
-      <span className='signUpHeading'>Sign Up To Quiller</span>
-      <div className='descSignUp'>Create an account to get access to all the features of quiller</div>
-      <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+    <div className="mb-5 flex flex-col justify-center items-center p-2 mr-auto ml-auto w-full mt-28">
+      <form onSubmit={handleSubmitSignup} className="flex flex-col justify-center items-center  bg-gradient-to-r rounded-2xl from-blue-300 to-blue-500 py-5 w-fit px-1 gap-2 ">
+      <span className='sm:text-3xl text-2xl font-bold font-sans text-white text-center'>
+        Sign Up To SkillSync
+      </span>
+      <div className='py-1 w-3/4 text-center sm:text-xl text-sm text-slate-50-500/60 font-thin font-sans text-white'>
+        Create an account to get access to all the features of SkillSync
+      </div>
+
+      <div className="flex flex-col justify-center w-2/3">
+          <label htmlFor="name" className="sm:text-lg text-sm font-sans font-semibold text-black">
             Name
           </label>
           <input
+            id='name'
             value={name}
             type="text"
-            className="form-control signUpInputBox"
-            id="name"
+            className="form-control"
             name="name"
             aria-describedby="name" 
             onChange={onChange}
@@ -47,14 +52,14 @@ const Signup = (props) => {
           />
         </div>
 
-          <div>
-            <label htmlFor="exampleInputEmail1" className="form-label">
+          <div className="flex flex-col justify-center w-2/3">
+            <label htmlFor="email" className="sm:text-lg text-sm font-sans font-semibold text-black">
               Email address
             </label>
             <input
               value={email}
               type="email"
-              className="emailBoxSignUp form-control signUpInputBox"
+              className="form-control"
               id="email"
               name="email"
               aria-describedby="emailHelp" 
@@ -63,8 +68,8 @@ const Signup = (props) => {
             />
           </div>
 
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
+        <div className="flex flex-col justify-center w-2/3">
+          <label htmlFor="password" className="font-sans font-semibold text-black">
             Password
           </label>
           <input
@@ -72,15 +77,15 @@ const Signup = (props) => {
             type="password"
             id="password"
             name="password"
-            className="form-control signUpInputBox" 
+            className="form-control" 
             onChange={onChange}
             required
             minLength={5}
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
+        <div className="flex flex-col justify-center w-2/3">
+          <label htmlFor="cpassword" className="sm:text-lg text-sm font-sans font-semibold text-black">
             Confirm Password
           </label>
           <input
@@ -88,41 +93,28 @@ const Signup = (props) => {
             type="cpassword"
             id="cpassword"
             name="cpassword"
-            className="form-control signUpInputBox" 
+            className="form-control" 
             onChange={onChange}
             required
             minLength={5}
           />
         </div>
 
-        <button type="submit" className="btn signUpButton">
+        <button type="submit" className="mt-3 shadow bg-gradient-to-l text-white rounded-xl from-green-300 to-green-500 px-3 py-2 hover:from-green-500 hover:to-green-300 font-normal font-sans sm:text-lg text-md">
           Sign Up
         </button>
-        {
-          <div className={scrollY >= 50? 'visible':'invisible'}> 
-          <span>Already have an account? </span>
-          <Link to='/login'>Click Here</Link>
-          <span> to Log In</span>
-        </div>
-        }
-        <div className='altDiv'>
-          <span>Already have an account? </span>
-            <Link to='/login'>Click Here</Link>
-            <span> to Log In</span>
+        <div className='flex flex-wrap mt-3 justify-center items-center'>
+          <div className='text-center'>
+            Already have an account?
+          </div>
+          <Link className='hover:text-white font-bold font-sans text-center' to='/login'>
+            Click here
+          </Link>
+          <div className='text-center'> 
+            to log in.
+          </div>
         </div>
       </form>
-      <div onClick={toggleBtn} className='divBtnFeatures'>
-      <i className="fa-solid fa-arrow-right"></i>
-      </div>
-      <div className={toggle == true?'sideSignUpBoxVisible':'sideSignUpBoxInvisible'}>
-        <h3 className='headingFeatures'>Features in quiller: </h3>
-        <ul className='boxUl'>
-          <li className='features'>Upto 50GB Cloud storage space</li>
-          <li className='features'>Easy note generation</li>
-          <li className='features'>Downloadable in PDF format</li>
-          <li className='features'>Some other random Bullshit.</li>
-        </ul>
-      </div>
     </div>
   );
 };

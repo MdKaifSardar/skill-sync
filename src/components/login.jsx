@@ -18,35 +18,40 @@ const Login = (props) => {
     // eslint-disable-next-line
   }, [])
   return (
-    <div className='flex flex-row justify-center items-center w-full h-fit mt-32 p-2'>
-      <div className='flex flex-col gap-3 justify-center items-center bg-slate-300/10 shadow rounded-2xl px-2 py-4'>
-        <span className='sm:text-4xl text-3xl font-sans font-semibold blue-gradient_text text-center'>
-          Login to SkillSync
-        </span>
-        <form onSubmit={handleSubmitLogin} className="flex flex-col justify-center items-center">
-          <div className="flex flex-col justify-center gap-1">
-            <label htmlFor="email" className='text-center text-lg text-slate-500/60'>
+    <div className="mb-5 flex flex-col justify-center items-center p-2 mr-auto ml-auto w-full mt-28">
+        <form onSubmit={handleSubmitLogin} className="flex flex-col justify-center items-center  bg-gradient-to-r rounded-2xl from-blue-300 to-blue-500 py-4 w-fit px-1 gap-2 ">
+          <span className='sm:text-3xl text-2xl font-bold font-sans text-white text-center'>
+            Login to SkillSync
+          </span>
+
+          <div className="flex flex-col justify-center w-2/3">
+            <label htmlFor="email" className="sm:text-lg text-sm font-sans font-normal text-black">
               Enter email address
             </label>
             <input type="email" required className="form-control" value={email} id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Email" onChange={onChange}/>
           </div>
-          <div className="flex flex-col justify-center gap-1">
-            <label htmlFor="password" className='text-center text-lg text-slate-500/60' required>
+
+          <div className="flex flex-col justify-center w-2/3">
+            <label htmlFor="password" className="sm:text-lg text-sm font-sans font-normal text-black" required>
               Enter password
             </label>
             <input onChange={onChange} type="password" value={password} className="form-control" id="password" name="password" placeholder="Enter Password"/>
           </div>
-          <button type="submit" disabled={credentials.email === ''&&credentials.password === ''} className="mt-3 ml-auto mr-auto w-fit bg-gradient-to-r from-blue-400 to-blue-500 p-2 font-sans text-semibold text-white hover:from-blue-700/80 hover:to-blue-600/60 rounded-2xl shadow">
+
+          <button type="submit" disabled={credentials.email === ''&&credentials.password === ''} className="mt-3 shadow bg-gradient-to-l text-white rounded-xl from-green-300 to-green-500 px-3 py-2 hover:from-green-500 hover:to-green-300 font-normal font-sans sm:text-lg text-md hover:cursor-pointer">
             Login
           </button>
+          <div className='flex flex-wrap justify-center items-center p-3'>
+            <span className='text-sans text-black text-center text-thin'>
+              Don't have an account? 
+            </span>
+            <Link className="hover:text-white text-semibold text-center" to="/signup">
+              Create One
+            </Link>
+          </div>
+
         </form>
-        <div className='p-2 bg-slate-300/30'>
-          Don't have an account? <span>
-            <Link className="text-blue-500 hover:cursor-pointer" to="/signup">Create One</Link>
-          </span>
-        </div>
       </div>
-    </div>
   )
 }
 

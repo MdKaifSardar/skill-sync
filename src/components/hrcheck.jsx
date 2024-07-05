@@ -6,7 +6,7 @@ const Hrcheck = () => {
     const context = useContext(UserContext);
   const {formData, removeAll, names, resumeResults, isSubmitted, hrFormData, handleSubmit, handleFileChange, handleInputChange,} = context;
   return (
-    <div className='sm:p-10 p-2 rounded-2xl bg-slate-300/10 shadow mr-auto ml-auto flex flex-col justify-center items-center w-4/5 h-fit mt-32 gap-2'>
+    <div className='mb-5 sm:p-10 p-2 rounded-2xl bg-slate-300/10 shadow mr-auto ml-auto flex flex-col justify-center items-center w-4/5 h-fit mt-32 gap-2'>
         <span className='md:text-5xl sm:text-3xl text-2xl blue-gradient_text font-bold text-center'>Check Multiple Resumes</span>
           <form className='mt-2 p-3 flex flex-col justify-center gap-3' onSubmit={handleSubmit}>
               <div className='flex flex-col justify-center gap-2'>

@@ -12,6 +12,7 @@ import Findjobs from './components/findjobs';
 import AuthState from './context/authState';
 import Login from './components/login';
 import Signup from './components/signup';
+import Footer from './components/footer';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +45,7 @@ const App = () => {
                   <Route path='/login' element={<Login showAlert={showAlert} setIsLoading={setIsLoading}/>}/>
                   <Route path='/signup' element={<Signup showAlert={showAlert} setIsLoading={setIsLoading}/>}/>
               </Routes>
+              <Footer/>
             </UserState>
           </AuthState>
         </Router>

@@ -4,8 +4,8 @@ import '../css/home.css'
 
 const Home = () => {
   return (
-    <div className='flex flex-col w-full h-fit justify-center items-center mt-32 p-2 gap-3'>
-      <div className='header_div rounded-xl flex flex-col gap-2 p-3  bg-slate-300/20 shadow-md h-fit w-4/5'>
+    <div className='pb-5 home_bg flex flex-col w-full h-fit justify-center items-center mt-[98px] pt-3 p-2 gap-3'>
+      <div className='header_div rounded-xl flex flex-col gap-2 p-3 bg-slate-300/20 shadow-md h-fit w-4/5'>
         <div>
           <span className='sm:text-4xl text-2xl font-sans font-semibold blue-gradient_text'>Hi</span> <span className='sm:text-2xl text-xl font-sans'>there, welcome to SkillSync</span>
         </div>

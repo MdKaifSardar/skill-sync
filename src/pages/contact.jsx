@@ -69,7 +69,7 @@ const Contact = (props) => {
     }
   }
   return (
-    <section className='mt-32 relative flex flex-col justify-center items-center h-full shadow p-2 sm:w-4/5 w-[90%] ml-auto mr-auto rounded-2xl bg-slate-300/20'>
+    <section className='mt-32 mb-5 relative flex flex-col justify-center items-center h-full shadow p-2 sm:w-4/5 w-[90%] ml-auto mr-auto rounded-2xl bg-slate-300/20'>
         <h1 className='head-text blue-gradient_text cotact_page_heading'>Get in touch</h1>
         <div className='flex flex-wrap gap-2 mt-auto justify-center items-center'>
           {

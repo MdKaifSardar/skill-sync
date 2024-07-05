@@ -7,7 +7,7 @@ const Findjobs = () => {
     const context = useContext(UserContext);
     const {jobFormData, setJobFormData, handleJobFormChange, findJobsFetch, jobs} = context;
   return (
-    <div className='mt-20 px-2 h-fit w-full flex flex-col justify-center items-center'>
+    <div className='mt-20 mb-5 px-2 h-fit w-full flex flex-col justify-center items-center'>
         <form className='flex flex-col w-full rounded-b-full justify-center items-center p-4 gap-3 bg-slate-300/50 shadow-md' action="sumbit" onSubmit={findJobsFetch}>
             <div className='flex flex-wrap justify-center items-center sm:gap-3 gap-2'>
                 <div className='flex flex-col justify-center'>
@@ -56,7 +56,7 @@ const Findjobs = () => {
     {jobs && jobs.length > 0 ? (
         <JobBox/>
       ) : (
-        <p className='sm:mt-10 mt-3 sm:text-xl text-md font-sans'>No Results</p>
+        <p className='h-screen sm:mt-10 mt-3 sm:text-xl text-md font-sans'>No Results</p>
       )}
     </div>
   )
